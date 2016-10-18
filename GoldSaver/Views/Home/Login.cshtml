@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Home/Index.cshtml";
+}
+@model GoldSaver.Models.LoginViewModel
+
+<div id="login" class="col s4 offset-s7">
+    <h5 id="loginName" class="col s12">
+        LOGIN
+        <span>
+            <a href="~/Home/Register" class="login-btn btn-floating" id="log-to-reg">
+                <i class="large material-icons">add</i>
+            </a>
+        </span>
+    </h5>
+    @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "col s12", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="row">
+            <div class="input-field col s12">
+                @Html.TextBoxFor(m => m.UserName, new { @class = "validate", type = "text" })
+                <label for="user_name">User Name</label>
+            </div>
+        </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            @Html.PasswordFor(m => m.Password, new { @class = "validate", type = "password" })
+                            <label for="password">Password</label>
+                        </div>
+                    </div>
+                    <div class="center-button">
+                        <button id="login-btn" class="btn waves-effect waves-light" type="submit">
+                            LOGIN
+                        </button>
+                    </div>
+    }
+</div>
+
+
+
