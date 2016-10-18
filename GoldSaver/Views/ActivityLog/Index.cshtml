@@ -1,4 +1,5 @@
-﻿@{
+﻿@using Microsoft.AspNet.Identity
+@{
     ViewBag.Title = "Index";
 }
 
@@ -133,29 +134,41 @@
 
 @section scripts {
     <script>
+        $.ajax({
+            type: "GET",
+            url: "/api/categories",
+            data: "",
+            success: (data) => {
+                alert(data[0].CategoryName);
+            },
+            error: () => {
+
+            }
+        });
+
         $(document).ready(function () {
             var list_log = {
                 "activity": [
-                {
-                    "logday": 12,
-                    "logweekday": "Monday",
-                    "logmonth": "September",
-                    "consumday": 1000000,
-                    "listlog": [
-                        ["favorite", "Gấu", "Mời gấu đi ăn", "1.000.000"],
-                        ["favorite", "Gấu", "Mời gấu đi ăn", "1.000.000"]
-                    ]
-                },
-                {
-                    "logday": 12,
-                    "logweekday": "Monday",
-                    "logmonth": "September",
-                    "consumday": 1000000,
-                    "listlog": [
-                        ["favorite", "Gấu", "Mời gấu đi ăn", "1.000.000"],
-                        ["favorite", "Gấu", "Mời gấu đi ăn", "1.000.000"]
-                    ]
-                }
+                    {
+                        "logday": 12,
+                        "logweekday": "Monday",
+                        "logmonth": "September",
+                        "consumday": 1000000,
+                        "listlog": [
+                            ["favorite", "Gấu", "Mời gấu đi ăn", "1.000.000"],
+                            ["favorite", "Gấu", "Mời gấu đi ăn", "1.000.000"]
+                        ]
+                    },
+                    {
+                        "logday": 12,
+                        "logweekday": "Monday",
+                        "logmonth": "September",
+                        "consumday": 1000000,
+                        "listlog": [
+                            ["favorite", "Gấu", "Mời gấu đi ăn", "1.000.000"],
+                            ["favorite", "Gấu", "Mời gấu đi ăn", "1.000.000"]
+                        ]
+                    }
                 ]
             }
 
@@ -163,6 +176,12 @@
             $(".logtable").html(template({
                 list: list_log.activity
             }));
+
+            $("#add-transaction").click(function () {
+                console.log("Hello");
+            });
+
+            $('.modal-trigger').leanModal();
 
             $("#add-transaction-btn").click(function () {
                 var data = {

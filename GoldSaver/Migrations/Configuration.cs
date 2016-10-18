@@ -1,6 +1,9 @@
+using GoldSaver.Models;
+
 namespace GoldSaver.Migrations
 {
     using System;
+    using System.IO;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
@@ -26,6 +29,21 @@ namespace GoldSaver.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+            string url = "E:\\[PJ] WebProject\\GoldSaver\\GoldSaver\\Content\\image\\categories";
+            string[] filePaths = Directory.GetFiles(url);
+            var i = 0;
+            foreach (var item in filePaths)
+            {
+                var str = item.Split('\\');
+                var name = str.Last().Split('.').First();
+
+                context.Categories.AddOrUpdate(c => c.Link,
+                    new Models.Category()
+                    {
+                        CategoryName = name,
+                        Link = item
+                    });
+            }
         }
     }
 }

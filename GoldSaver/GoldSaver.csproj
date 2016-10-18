@@ -183,27 +183,16 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ActivityLogController.cs" />
     <Compile Include="Controllers\API\ActivityLogsController.cs" />
+    <Compile Include="Controllers\API\CategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\WalletController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201610100419168_Initial.cs" />
-    <Compile Include="Migrations\201610100419168_Initial.Designer.cs">
-      <DependentUpon>201610100419168_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201610100443192_Transaction_Wallet.cs" />
-    <Compile Include="Migrations\201610100443192_Transaction_Wallet.Designer.cs">
-      <DependentUpon>201610100443192_Transaction_Wallet.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201610100458144_User_Category.cs" />
-    <Compile Include="Migrations\201610100458144_User_Category.Designer.cs">
-      <DependentUpon>201610100458144_User_Category.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201610110345578_Foo.cs" />
-    <Compile Include="Migrations\201610110345578_Foo.Designer.cs">
-      <DependentUpon>201610110345578_Foo.cs</DependentUpon>
+    <Compile Include="Migrations\201610181002144_Initial.cs" />
+    <Compile Include="Migrations\201610181002144_Initial.Designer.cs">
+      <DependentUpon>201610181002144_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -224,6 +213,49 @@
     <Content Include="Content\google-material\material-icons.css" />
     <Content Include="Content\google-material\MaterialIcons-Regular.svg" />
     <Content Include="Content\image\background.jpg" />
+    <Content Include="Content\image\categories\bill.png" />
+    <Content Include="Content\image\categories\birthday.png" />
+    <Content Include="Content\image\categories\books.png" />
+    <Content Include="Content\image\categories\bus.png" />
+    <Content Include="Content\image\categories\charity.png" />
+    <Content Include="Content\image\categories\children.png" />
+    <Content Include="Content\image\categories\clothes.png" />
+    <Content Include="Content\image\categories\coffee-pot.png" />
+    <Content Include="Content\image\categories\drug.png" />
+    <Content Include="Content\image\categories\dunno.png" />
+    <Content Include="Content\image\categories\education.png" />
+    <Content Include="Content\image\categories\electricity.png" />
+    <Content Include="Content\image\categories\entertainment.png" />
+    <Content Include="Content\image\categories\food-and-drink.png" />
+    <Content Include="Content\image\categories\friends.png" />
+    <Content Include="Content\image\categories\funeral.png" />
+    <Content Include="Content\image\categories\game.png" />
+    <Content Include="Content\image\categories\gas.png" />
+    <Content Include="Content\image\categories\gift.png" />
+    <Content Include="Content\image\categories\health-care.png" />
+    <Content Include="Content\image\categories\heath-and-fitness.png" />
+    <Content Include="Content\image\categories\house.png" />
+    <Content Include="Content\image\categories\insurance.png" />
+    <Content Include="Content\image\categories\internet.png" />
+    <Content Include="Content\image\categories\maintenance.png" />
+    <Content Include="Content\image\categories\money.png" />
+    <Content Include="Content\image\categories\movie.png" />
+    <Content Include="Content\image\categories\orthers.png" />
+    <Content Include="Content\image\categories\parking.png" />
+    <Content Include="Content\image\categories\pet.png" />
+    <Content Include="Content\image\categories\petro.png" />
+    <Content Include="Content\image\categories\phone.png" />
+    <Content Include="Content\image\categories\shoe.png" />
+    <Content Include="Content\image\categories\shopping.png" />
+    <Content Include="Content\image\categories\sport.png" />
+    <Content Include="Content\image\categories\sweetheart.png" />
+    <Content Include="Content\image\categories\taxi.png" />
+    <Content Include="Content\image\categories\transportation.png" />
+    <Content Include="Content\image\categories\travel.png" />
+    <Content Include="Content\image\categories\tv.png" />
+    <Content Include="Content\image\categories\water.png" />
+    <Content Include="Content\image\categories\wedding.png" />
+    <Content Include="Content\image\categories\wine-bottle.png" />
     <Content Include="Content\image\Wallpaer-HD%285%29.jpg" />
     <Content Include="Content\materialize\css\materialize.css" />
     <Content Include="Content\materialize\css\materialize.min.css" />
@@ -328,17 +360,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201610100419168_Initial.resx">
-      <DependentUpon>201610100419168_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201610100443192_Transaction_Wallet.resx">
-      <DependentUpon>201610100443192_Transaction_Wallet.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201610100458144_User_Category.resx">
-      <DependentUpon>201610100458144_User_Category.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201610110345578_Foo.resx">
-      <DependentUpon>201610110345578_Foo.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201610181002144_Initial.resx">
+      <DependentUpon>201610181002144_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
