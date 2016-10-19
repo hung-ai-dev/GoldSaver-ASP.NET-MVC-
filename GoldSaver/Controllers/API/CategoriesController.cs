@@ -24,8 +24,8 @@ namespace GoldSaver.Controllers.API
             List<Category> categories = new List<Category>();
             foreach (var id in cateId)
             {
-                var nameCate = _context.Categories.Where(c => c.Id == id).Select(c => c.CategoryName).ToString();
-                var linkCate = _context.Categories.Where(c => c.Id == id).Select(c => c.Link).ToString();
+                var nameCate = _context.Categories.Where(c => c.Id == id).Select(c => c.CategoryName).ToList().First();
+                var linkCate = _context.Categories.Where(c => c.Id == id).Select(c => c.Link).ToList().First();
                 categories.Add(new Category()
                 {
                     Id = id,
