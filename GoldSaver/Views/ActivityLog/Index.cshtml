@@ -16,16 +16,8 @@
                 <form>
                     <div class="input-field">
                         <i class="material-icons prefix">storage</i>
-                        <div class="select-wrapper" id="list-category"></div>
-                        @*<div class="select-wrapper" id="list-category">
-                            <span class="caret">▼</span>
-                            <select id="wallet-input" class="initialized">
-                                <option value="" disabled="" selected="">Choose your option</option>
-                                <option value="1">Option 1</option>
-                                <option value="2">Option 2</option>
-                                <option value="3">Option 3</option>
-                            </select>
-                        </div>*@
+                        <select class="select-wrapper" id="list-category">
+                        </select>
                         <label for="category">Category</label>
                     </div>
 
@@ -43,15 +35,8 @@
 
                     <div class="input-field">
                         <i class="material-icons prefix">account_balance_wallet</i>
-                        <div class="select-wrapper">
-                            <span class="caret">▼</span>
-                            <select id="wallet-input" class="initialized">
-                                <option value="" disabled="" selected="">Choose your option</option>
-                                <option value="1">Option 1</option>
-                                <option value="2">Option 2</option>
-                                <option value="3">Option 3</option>
-                            </select>
-                        </div>
+                        <select class="select-wrapper" id="list-wallet">
+                        </select>
                         <label for="wallet">Wallet</label>
                     </div>
 
@@ -132,124 +117,131 @@
         </div>
     </div>
 
-    <script type="text/template" id="list_view">
-        <div class="select-wrapper">
-            <span class="caret">▼</span>
-            <select id="cate-input" class="initialized">
-                <option value="" disabled="" selected="">
-                </option>
-                <%_.each(list, function(object) {
-                console.log(object);
-                %>
-                <option value="<%-object.Id%>">
-                    
-                    <%- object.CategoryName %>
-                </option>
-                <% }) %>
-            </select>
-        </div>
-</script>
+    <script type="text/template" id="list_cate_template">
+        <select id="cate-input" class="icons select-wrapper">
+            <option value="" disabled="" selected="">Choose you option</option>
+            <%_.each(list, function(object) { %>
+            <option value="<%-object.Id%>" data-icon="<%-object.Link%>" class="left circle"><%-object.CategoryName %></option>
+            <% }) %>
+        </select>
+    </script>
+
+    <script type="text/template" id="list_wallet_template">
+        <span class="caret">▼</span>
+        <select id="wallet-input" class="icons select-wrapper">
+            <option value="" disabled="" selected=""></option>
+            <%_.each(list, function(object) { %>
+            <option value="<%-object.Id%>" data-icon="<%-object.Link%>" class="left circle"><%-object.Name %></option>
+            <% }) %>
+        </select>
+    </script>
+
 </div>
 
 @section scripts {
     <script>
-        $(document)
-            .ready(function() {
-                $.ajax({
-                    type: "GET",
-                    url: "/api/categories",
-                    data: "",
-                    success: (data) => {
-                        alert(data);
-                        var template = _.template($("#list_view").html());
-                        $("#list-category").html(template({
-                            list: data
-                        }));
-                        $('select').material_select();
-                    },
-                    error: () => {
-
-                    }
-                });
-
-                var list_log = {
-                    "activity": [
-                        {
-                            "logday": 12,
-                            "logweekday": "Monday",
-                            "logmonth": "September",
-                            "consumday": 1000000,
-                            "listlog": [
-                                ["favorite", "Gấu", "Mời gấu đi ăn", "1.000.000"],
-                                ["favorite", "Gấu", "Mời gấu đi ăn", "1.000.000"]
-                            ]
-                        },
-                        {
-                            "logday": 12,
-                            "logweekday": "Monday",
-                            "logmonth": "September",
-                            "consumday": 1000000,
-                            "listlog": [
-                                ["favorite", "Gấu", "Mời gấu đi ăn", "1.000.000"],
-                                ["favorite", "Gấu", "Mời gấu đi ăn", "1.000.000"]
-                            ]
-                        }
-                    ]
-                }
-
-                var template = _.template($("#list_log").html());
-                $(".logtable")
-                    .html(template({
-                        list: list_log.activity
+        $(document).ready(function () {
+            $.ajax({
+                type: "GET",
+                url: "/api/categories",
+                data: "",
+                success: (data) => {
+                    var template = _.template($("#list_cate_template").html());
+                    $("#list-category").html(template({
+                        list: data
                     }));
+                    $('select').material_select();
+                },
+                error: () => {
 
-                $("#add-transaction")
-                    .click(function() {
-                        console.log("Hello");
-                    });
-
-                $('.modal-trigger').leanModal();
-
-                $("#add-transaction-btn")
-                    .click(function() {
-                        var data = {
-                            "category": $("#cate-input").val(),
-                            "cost": $("#cost").val(),
-                            "datetime": $("#add-transaction__date").val(),
-                            "wallet": $("#wallet-input").val(),
-                            "note": $("#note").val()
-                        }
-                        console.log(data);
-
-                        $.ajax({
-                            type: "POST",
-                            url: "/api/activitylogs",
-                            data: data,
-                            dataType: "JSON",
-                            success: (response) => {
-                                alert("New transaction has been added");
-                            },
-                            error: () => {
-                                alert("Sth failed");
-                            }
-                        });
-                    })
+                }
             });
+
+            $.ajax({
+                type: "GET",
+                url: "/api/wallets",
+                data: "",
+                success: (data) => {
+                    var template = _.template($("#list_wallet_template").html());
+                    $("#list-wallet").html(template({
+                        list: data
+                    }));
+                    $('select').material_select();
+                },
+                error: () => {
+
+                }
+            });
+
+            var list_log = {
+                "activity": [
+                    {
+                        "logday": 12,
+                        "logweekday": "Monday",
+                        "logmonth": "September",
+                        "consumday": 1000000,
+                        "listlog": [
+                            ["favorite", "Gấu", "Mời gấu đi ăn", "1.000.000"],
+                            ["favorite", "Gấu", "Mời gấu đi ăn", "1.000.000"]
+                        ]
+                    },
+                    {
+                        "logday": 12,
+                        "logweekday": "Monday",
+                        "logmonth": "September",
+                        "consumday": 1000000,
+                        "listlog": [
+                            ["favorite", "Gấu", "Mời gấu đi ăn", "1.000.000"],
+                            ["favorite", "Gấu", "Mời gấu đi ăn", "1.000.000"]
+                        ]
+                    }
+                ]
+            }
+
+            var template = _.template($("#list_log").html());
+            $(".logtable")
+                .html(template({
+                    list: list_log.activity
+                }));
+
+            $('.modal-trigger').leanModal();
+
+            $("#add-transaction-btn").click(function (e) {
+                e.preventDefault();
+                var data = {
+                    "category": $("#cate-input").attr("value"),
+                    "cost": $("#cost").val(),
+                    "datetime": $("#add-transaction__date").val(),
+                    "wallet": $("#wallet-input").attr("value"),
+                    "note": $("#note").val()
+                }
+                console.log(data);
+                //$.ajax({
+                //    type: "POST",
+                //    url: "/api/activitylogs",
+                //    data: data,
+                //    dataType: "JSON",
+                //    success: (response) => {
+                //        alert("New transaction has been added");
+                //    },
+                //    error: () => {
+                //        alert("Sth failed");
+                //    }
+                //});
+            });
+        });
 
         setTimeout(() => {
-                $('.collapsible')
-                    .collapsible({
-                        accordion: false
-                    });
-            },
-            500)
+            $('.collapsible').collapsible({
+                accordion: false
+            });
+        }, 500);
 
         $('select').material_select();
-        $('.datepicker')
-            .pickadate({
-                selectMonths: true, // Creates a dropdown to control month
-                selectYears: 15 // Creates a dropdown of 15 years to control year
-            });
+        $('.datepicker').pickadate({
+            selectMonths: true, // Creates a dropdown to control month
+            selectYears: 15 // Creates a dropdown of 15 years to control year
+        });
     </script>
-    
+
 }

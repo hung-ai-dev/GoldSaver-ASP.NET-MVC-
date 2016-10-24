@@ -37,11 +37,11 @@ namespace GoldSaver.Migrations
                 var str = item.Split('\\');
                 var name = str.Last().Split('.').First();
 
-                context.Categories.AddOrUpdate(c => c.Link,
+                context.Categories.AddOrUpdate(c => c.CategoryName,
                     new Models.Category()
                     {
                         CategoryName = name,
-                        Link = item
+                        Link = "https://raw.githubusercontent.com/CNPMteam7/design/master/categories/icon/" + str.Last()
                     });
             }
         }
