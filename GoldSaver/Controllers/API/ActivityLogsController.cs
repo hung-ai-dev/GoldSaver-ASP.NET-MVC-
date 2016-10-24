@@ -25,7 +25,7 @@ namespace GoldSaver.Controllers.API
         {
             Transaction newTrans = new Transaction()
             {
-                Category = transaction.Category,
+                CategoryId = transaction.CategoryId,
                 Cost =  transaction.Cost,
                 DateTime = transaction.DateTime,
                 Note = transaction.Note,

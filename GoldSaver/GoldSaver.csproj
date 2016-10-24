@@ -195,6 +195,10 @@
     <Compile Include="Migrations\201610181002144_Initial.Designer.cs">
       <DependentUpon>201610181002144_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610240437106_Edit Transaction.cs" />
+    <Compile Include="Migrations\201610240437106_Edit Transaction.Designer.cs">
+      <DependentUpon>201610240437106_Edit Transaction.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -364,6 +368,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201610181002144_Initial.resx">
       <DependentUpon>201610181002144_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610240437106_Edit Transaction.resx">
+      <DependentUpon>201610240437106_Edit Transaction.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

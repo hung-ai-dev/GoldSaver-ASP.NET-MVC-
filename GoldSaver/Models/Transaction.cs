@@ -17,7 +17,9 @@ namespace GoldSaver.Models
         public Wallet Wallet { get; set; }
         public int WalletId { get; set; }
 
+        public int CategoryId { get; set; }
         public Category Category { get; set; }
+
         public float Cost { get; set; }
         public DateTime DateTime { get; set; }
         public string Note { get; set; }
