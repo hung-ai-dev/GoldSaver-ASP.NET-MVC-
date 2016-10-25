@@ -13,6 +13,12 @@ namespace GoldSaver
                         "~/Scripts/underscore-min.js",
                         "~/Scripts/jquery.dd.min.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/app").Include(
+                        "~/Scripts/MyScripts/Services/CategoriesService.js",
+                        "~/Scripts/MyScripts/Services/WalletsService.js",
+                        "~/Scripts/MyScripts/Controllers/CategoriesController.js",
+                        "~/Scripts/MyScripts/Controllers/WalletsController.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/material").Include(
                         "~/Content/materialize/js/materialize.min.js"));
 

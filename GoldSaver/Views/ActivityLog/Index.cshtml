@@ -142,38 +142,9 @@
 @section scripts {
     <script>
         $(document).ready(function () {
-            $.ajax({
-                type: "GET",
-                url: "/api/categories",
-                data: "",
-                success: (data) => {
-                    var template = _.template($("#list_cate_template").html());
-                    $("#list-category").html(template({
-                        list: data
-                    }));
-                    $('select').material_select();
-                },
-                error: () => {
-
-                }
-            });
-
-            $.ajax({
-                type: "GET",
-                url: "/api/wallets",
-                data: "",
-                success: (data) => {
-                    var template = _.template($("#list_wallet_template").html());
-                    $("#list-wallet").html(template({
-                        list: data
-                    }));
-                    $('select').material_select();
-                },
-                error: () => {
-
-                }
-            });
-
+            WalletsController.init();
+            CategoriesController.init();
+           
             var list_log = {
                 "activity": [
                     {
