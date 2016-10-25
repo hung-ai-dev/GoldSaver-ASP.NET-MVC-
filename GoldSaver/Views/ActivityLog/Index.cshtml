@@ -94,16 +94,16 @@
                             <span class="log-weekday"><%- object.logweekday %></span>
                             <span class="log-month"><%- object.logmonth %></span>
                             <i class="material-icons">keyboard_arrow_down</i>
-                            <span class="consum-day"><%- object.consumday %></span>
+                            <span class="consum-day"><%- object.cost %></span>
                         </div>
                         <div class="collapsible-body">
                             <ul>
                                 <%_.each(object.listlog, function(data) { %>
                                 <li class="row">
-                                    <i class="col s1 material-icons log-cate-icon"> <%- data[0] %></i>
-                                    <span class="col s3 log-cate-name"><%- data[1] %></span>
-                                    <span class="col s6 log-description"><%- data[2] %></span>
-                                    <span class="col s2 log-money"><%- data[3] %></span>
+                                    <img class="col s1 log-cate-icon" style="margin-top: 5px" src="<%- data.CategoryLink %>" alt="" />
+                                    <span class="col s3 log-cate-name"><%- data.CategoryName %></span>
+                                    <span class="col s6 log-description"><%- data.Note %></span>
+                                    <span class="col s2 log-money"><%- data.Cost %></span>
                                 </li>
                                 <% }) %>
                             </ul>
@@ -145,35 +145,46 @@
             WalletsController.init();
             CategoriesController.init();
            
-            var list_log = {
-                "activity": [
-                    {
-                        "logday": 12,
-                        "logweekday": "Monday",
-                        "logmonth": "September",
-                        "consumday": 1000000,
-                        "listlog": [
-                            ["favorite", "Gấu", "Mời gấu đi ăn", "1.000.000"],
-                            ["favorite", "Gấu", "Mời gấu đi ăn", "1.000.000"]
-                        ]
-                    },
-                    {
-                        "logday": 12,
-                        "logweekday": "Monday",
-                        "logmonth": "September",
-                        "consumday": 1000000,
-                        "listlog": [
-                            ["favorite", "Gấu", "Mời gấu đi ăn", "1.000.000"],
-                            ["favorite", "Gấu", "Mời gấu đi ăn", "1.000.000"]
-                        ]
-                    }
-                ]
-            }
+            //var list_log = {
+            //    "activity": [
+            //        {
+            //            "logday": 12,
+            //            "logweekday": "Monday",
+            //            "logmonth": "September",
+            //            "consumday": 1000000,
+            //            "listlog": [
+            //                ["favorite", "Gấu", "Mời gấu đi ăn", "1.000.000"],
+            //                ["favorite", "Gấu", "Mời gấu đi ăn", "1.000.000"]
+            //            ]
+            //        },
+            //        {
+            //            "logday": 12,
+            //            "logweekday": "Monday",
+            //            "logmonth": "September",
+            //            "consumday": 1000000,
+            //            "listlog": [
+            //                ["favorite", "Gấu", "Mời gấu đi ăn", "1.000.000"],
+            //                ["favorite", "Gấu", "Mời gấu đi ăn", "1.000.000"]
+            //            ]
+            //        }
+            //    ]
+            //}
 
-            var template = _.template($("#list_log").html());
-            $(".logtable").html(template({
-                list: list_log.activity
-            }));
+            $.ajax({
+                type: "GET",
+                url: "/api/activitylogs",
+                data: "",
+                success: (data) => {
+                    var template = _.template($("#list_log").html());
+                    $(".logtable").html(template({
+                        list: data
+                    }));
+                    $('.collapsible').collapsible({
+                        accordion: false
+                    });
+                },
+                error: (response) => {console.log(response)}
+            });
 
             $('.modal-trigger').leanModal();
 
